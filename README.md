@@ -1,27 +1,44 @@
 # WishList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Este projeto foi gerado utilizando [Angular CLI](https://github.com/angular/angular-cli) versäo 17.3.3.
 
-## Development server
+## Descritivo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Projeto que contem uma aplicacao onde se tem um catalogo de filmes e e possivel buscar filmes e adiciona-los a sua lista de desejo e ver os rankings de melhores filmes.
 
-## Code scaffolding
+## Desenvolvimento local
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para rodar o projeto local basta rodar `ng serve` ou `npm start` em seu terminal e um servidor sera iniciado no endereco `http://localhost:4200/`. Alem disso a aplicacao sera automaticamente atualizada se houver qualquer mudanca nos seus arquivos.
+
+## Automatizacao
+
+Rode `ng generate component nome-do-componente` para gerar um novo componente. Voce tambem pode utilizar `ng generate directive|pipe|service|class|guard|interface|enum|module`. Esta e uma facilidade que o proprio angular cli nos oferece.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Rode `ng build` para fazer o build do projeto. Os artefatos do build seräo salvos na pasta `dist/`.
 
-## Running unit tests
+## Rodando testes unitarios
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Rode `ng test` ou `npm test` para executar os testes unitarios pelo [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Estrutura de pastas
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- app
+    - core
+        - components
+    - features
+        - feature-a
+            - components
+            - models
+            - pages
+            - services
+            - models
+    - shared
+        - components
 
-## Further help
+- App é a estrutura mais global que engloba toda a aplicação
+- Core é a estrutura onde temos componentes que são utilizados em toda a aplicação como o header e menu
+- Features é onde incluimos nossas páginas e suas estruturas especificas
+- Shared é a pasta responsável por componentes, services, models e tudo o que for compartilhado entre toda a aplicação e não é expecifico da aplicação, por exemplo um botão ou componente de paginação.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
