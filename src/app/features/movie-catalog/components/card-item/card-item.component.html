@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center pb-8">
+    <div class="mx-auto px-5">
+      <div class="max-w-xs cursor-pointer rounded-lg bg-white p-2 shadow max-h-full flex flex-col items-center card">
+        <img class="w-full rounded-lg object-cover object-center card-image" src='https://media.themoviedb.org/t/p/w220_and_h330_face/{{this.item.poster_path}}' height="300px" width="465px" alt="product" />
+        <p class="my-4 pl-4 font-bold text-gray-800">{{ this.item.title }}</p>
+        <div class="flex flex-wrap justify-center gap-2">
+          @for (genre of genres; track genre) {
+            <div class="center relative inline-block select-none whitespace-nowrap rounded-full border border-orange-600 py-2 px-3.5 align-baseline text-xs font-bold uppercase leading-none text-orange-500">
+              <div class="mt-px">{{ genre }}</div>
+            </div>
+          }
+        </div>
+        <p class="mb-4 ml-4 text-xl font-semibold text-gray-500 pt-6">Classificação: {{ this.item.vote_average }} / 10</p>
+        <app-button 
+        [text]="getButtonText()"
+        (click)="openModal(this.item.id)" />
+      </div>
+    </div>
+</div>
+<app-movie-modal [item]="item" />

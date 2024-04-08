@@ -1,0 +1,21 @@
+.content {
+    height: 100vh;
+    display: grid;
+    grid-template: "menu header header header" 4rem
+                    "menu main main main"
+                    "menu main main main"
+                    "menu main main main";
+}
+
+.main {
+    height: fit-content;
+    grid-area: main;
+}
+
+.header {
+    grid-area: header;
+}
+
+.menu {
+    grid-area: menu;
+}
