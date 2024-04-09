@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GenreResponse, Movie, MovieResponse, MovieSearchResponse } from '../models/movie';
+import { GenreResponse, Movie, MovieResponse, MovieSearchResponse } from '../../models/movie';
 
 @Injectable({
   providedIn: 'root'

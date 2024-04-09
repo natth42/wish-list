@@ -2,7 +2,7 @@ export interface Movie {
     adult: boolean,
     backdrop_path: string,
     favorite?: boolean,
-    genre_ids: [number],
+    genre_ids: Array<number>,
     id: number,
     original_language: string,
     original_title: string,
@@ -14,6 +14,10 @@ export interface Movie {
     video: boolean,
     vote_average: number,
     vote_count: number
+}
+
+export interface MovieFavorited extends Movie {
+    added_at: string
 }
 
 export interface MovieResponse {  
