@@ -12,13 +12,15 @@ import { InputComponent } from "@shared/components/input/input.component";
 import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 
 import { ActivatedRoute } from '@angular/router';
+import { MovieModalComponent } from "../../components/movie-modal/movie-modal.component";
+import MicroModal from 'micromodal';
 
 @Component({
     selector: 'app-movie-catalog-home-page',
     standalone: true,
     templateUrl: './movie-catalog-home-page.component.html',
     styleUrl: './movie-catalog-home-page.component.css',
-    imports: [CommonModule, HeaderComponent, SideMenuComponent, CardItemComponent, ButtonComponent, ButtonIconComponent, InputComponent, PaginationComponent]
+    imports: [CommonModule, HeaderComponent, SideMenuComponent, CardItemComponent, ButtonComponent, ButtonIconComponent, InputComponent, PaginationComponent, MovieModalComponent]
 })
 export class MovieCatalogHomePageComponent {
   movieList$!: Observable<MovieResponse>;
@@ -28,6 +30,17 @@ export class MovieCatalogHomePageComponent {
   public errorMessage: string = '';
   public currentPage: number = 1;
   public favorites: Movie[] = [];
+  public modalInfo: Movie = {
+    id: 0, title: '', overview: '', poster_path: '', release_date: '', genre_ids: [],
+    adult: false,
+    backdrop_path: '',
+    original_language: '',
+    original_title: '',
+    popularity: 0,
+    video: false,
+    vote_average: 0,
+    vote_count: 0
+  };
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) {}
 
@@ -81,6 +94,13 @@ export class MovieCatalogHomePageComponent {
 
   onKey(event: any) {
     this.search = event.target.value;
+  }
+
+  openModal(movie: Movie) {
+    this.modalInfo = movie;
+    setTimeout(() => {
+      MicroModal.show(`modal-movies`);
+    }, 100)
   }
 }
 

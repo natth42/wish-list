@@ -11,8 +11,9 @@ import { ButtonComponent } from "@shared/components/button/button.component";
     imports: [ButtonComponent]
 })
 export class MovieModalComponent {
-  @Input() item!: Movie;
   public favorites: MovieFavorited[] = [];
+
+  @Input() item!: Movie;
   
   ngOnInit() {
     MicroModal.init();

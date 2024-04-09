@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import MicroModal from 'micromodal';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Movie, MovieFavorited } from '@core/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
 import { ButtonComponent } from "@shared/components/button/button.component";
@@ -16,6 +15,8 @@ export class CardItemComponent {
   item!: Movie;
   @Input()
   genres: string[] = [];
+  @Output()
+  OpenModal = new EventEmitter<any>();
 
   public favorites: Array<MovieFavorited> = [];
 
@@ -26,8 +27,8 @@ export class CardItemComponent {
   handleClick (id: number) {
     if (this.item.favorite) {
       this.removeFromFavorites(id);
-    }else {
-      MicroModal.show(`modal-${ id }`);
+    } else {
+      this.OpenModal.emit();
     }
   }
 
