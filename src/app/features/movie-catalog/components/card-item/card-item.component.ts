@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie } from '@core/models/movie';
+import { Movie, MovieFavorited } from '@core/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
 import { ButtonComponent } from "@shared/components/button/button.component";
 
@@ -17,8 +17,24 @@ export class CardItemComponent {
   @Input()
   genres: string[] = [];
 
-  openModal (id: number) {
-    MicroModal.show(`modal-${ id }`);
+  public favorites: Array<MovieFavorited> = [];
+
+  ngOnInit() {
+    localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites') || '') : [];
+  }
+
+  handleClick (id: number) {
+    if (this.item.favorite) {
+      this.removeFromFavorites(id);
+    }else {
+      MicroModal.show(`modal-${ id }`);
+    }
+  }
+
+  removeFromFavorites(id: number) {
+    this.item.favorite = false;
+    this.favorites = this.favorites.filter((favorite) => favorite.id !== id);
+    localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 
   getButtonText() {

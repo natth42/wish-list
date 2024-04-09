@@ -13,7 +13,7 @@
         <p class="mb-4 ml-4 text-xl font-semibold text-gray-500 pt-6">Classificação: {{ this.item.vote_average }} / 10</p>
         <app-button 
         [text]="getButtonText()"
-        (click)="openModal(this.item.id)" />
+        (click)="handleClick(this.item.id)" />
       </div>
     </div>
 </div>

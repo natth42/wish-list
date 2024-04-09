@@ -45,12 +45,6 @@ describe('CardItemComponent', () => {
     expect(component.item).toEqual(movie);
   });
 
-  it('should open modal', () => {
-    const spy = spyOn(MicroModal, 'show');
-    component.openModal(1);
-    expect(spy).toHaveBeenCalledWith('modal-1');
-  });
-
   it('should return "Adicionado" if item is favorite', () => {
     component.item.favorite = true;
     expect(component.getButtonText()).toBe('Adicionado');
@@ -59,5 +53,19 @@ describe('CardItemComponent', () => {
   it('should return "Ver mais" if item is not favorite', () => {
     component.item.favorite = false;
     expect(component.getButtonText()).toBe('Ver mais');
+  });
+
+  it('should remove from favorites if item is already favorite', () => {
+    const spy = spyOn(component, 'removeFromFavorites');
+    component.item.favorite = true;
+    component.handleClick(1);
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+  
+  it('should open modal if item is not favorite', () => {
+    const spy = spyOn(MicroModal, 'show');
+    component.item.favorite = false;
+    component.handleClick(1);
+    expect(spy).toHaveBeenCalledWith('modal-1');
   });
 });
