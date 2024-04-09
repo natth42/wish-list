@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Movie, MovieFavorited } from '@core/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
 import { ButtonComponent } from "@shared/components/button/button.component";
@@ -10,13 +10,13 @@ import { ButtonComponent } from "@shared/components/button/button.component";
     styleUrl: './card-item.component.css',
     imports: [MovieModalComponent, ButtonComponent]
 })
-export class CardItemComponent {
+export class CardItemComponent implements OnInit {
   @Input()
   item!: Movie;
   @Input()
   genres: string[] = [];
   @Output()
-  OpenModal = new EventEmitter<any>();
+  OpenModal = new EventEmitter<void>();
 
   public favorites: Array<MovieFavorited> = [];
 

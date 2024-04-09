@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import MicroModal from 'micromodal';
 import { Movie, MovieFavorited } from '@core/models/movie';
 import { ButtonComponent } from "@shared/components/button/button.component";
@@ -10,7 +10,7 @@ import { ButtonComponent } from "@shared/components/button/button.component";
     styleUrl: './movie-modal.component.css',
     imports: [ButtonComponent]
 })
-export class MovieModalComponent {
+export class MovieModalComponent implements OnInit{
   public favorites: MovieFavorited[] = [];
 
   @Input() item!: Movie;

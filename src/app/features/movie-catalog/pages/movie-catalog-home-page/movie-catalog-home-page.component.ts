@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '@core/components/header/header.component';
 import { SideMenuComponent } from '@core/components/side-menu/side-menu.component';
 import { CardItemComponent } from '../../components/card-item/card-item.component';
@@ -22,7 +22,7 @@ import MicroModal from 'micromodal';
     styleUrl: './movie-catalog-home-page.component.css',
     imports: [CommonModule, HeaderComponent, SideMenuComponent, CardItemComponent, ButtonComponent, ButtonIconComponent, InputComponent, PaginationComponent, MovieModalComponent]
 })
-export class MovieCatalogHomePageComponent {
+export class MovieCatalogHomePageComponent implements OnInit{
   movieList$!: Observable<MovieResponse>;
   public genreList: GenreResponse = { genres: [] };
   
@@ -51,7 +51,7 @@ export class MovieCatalogHomePageComponent {
     this.searchMovie();
   }
 
-  changePage(page: any) {
+  changePage(page: number) {
     this.currentPage = page;
     this.searchMovie();
   }
@@ -92,8 +92,8 @@ export class MovieCatalogHomePageComponent {
     }
   }
 
-  onKey(event: any) {
-    this.search = event.target.value;
+  onKey(event: Event) {
+    this.search = (event.target as HTMLInputElement).value;
   }
 
   openModal(movie: Movie) {

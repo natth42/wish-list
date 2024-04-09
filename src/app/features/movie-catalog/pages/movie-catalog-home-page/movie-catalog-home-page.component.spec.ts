@@ -87,7 +87,7 @@ describe('MovieCatalogHomePageComponent', () => {
   });
 
   it('should update search value on onKey', () => {
-    const event = { target: { value: 'Avengers' } };
+    const event: any = { target: { value: 'Avengers' } };
 
     component.onKey(event);
 
@@ -117,7 +117,6 @@ describe('MovieCatalogHomePageComponent', () => {
   it('should return genre name on getGenreName', () => {
     const genreId = 1;
     const genreName = 'Action';
-    const genre: Genre = { id: genreId, name: genreName };
     component.genreList = genres;
     const result = component.getGenreName(genreId);
     expect(result).toBe(genreName);

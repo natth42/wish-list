@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardItemComponent } from './card-item.component';
 import { Movie } from '../../../../core/models/movie';
-import MicroModal from 'micromodal';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;

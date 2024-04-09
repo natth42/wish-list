@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "@core/components/header/header.component";
 import { SideMenuComponent } from "@core/components/side-menu/side-menu.component";
 import { Genre, GenreResponse, MovieFavorited } from '@core/models/movie';
@@ -18,7 +18,7 @@ import { CardItemComponent } from '../components/card-item/card-item.component';
     viewProviders: [provideIcons({ heroUsers })],
     imports: [HeaderComponent, SideMenuComponent, CardItemComponent, ButtonComponent, NgIconComponent, ButtonIconComponent]
 })
-export class WishListComponent {
+export class WishListComponent implements OnInit {
   public favorites: Array<MovieFavorited> = [];
   public genreList: GenreResponse = { genres: [] };
   public errorMessage: string = '';

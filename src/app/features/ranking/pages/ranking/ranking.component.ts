@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from "@core/components/header/header.component";
 import { SideMenuComponent } from "@core/components/side-menu/side-menu.component";
 import { MovieService } from '@core/services/movies/movie.service';
@@ -17,7 +17,7 @@ import { CardItemComponent } from '../../components/card-item/card-item.componen
     styleUrl: './ranking.component.css',
     imports: [CommonModule, HeaderComponent, SideMenuComponent, CardItemComponent, PaginationComponent, ButtonIconComponent]
 })
-export class RankingComponent {
+export class RankingComponent implements OnInit{
   movieList$!: Observable<MovieResponse>;
 
   public genreList: GenreResponse = { genres: [] };
@@ -31,7 +31,7 @@ export class RankingComponent {
     this.getTopRatedMovies();
   }
 
-  changePage(page: any) {
+  changePage(page: number) {
     this.currentPage = page;
     this.getTopRatedMovies();
   }
