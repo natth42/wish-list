@@ -82,4 +82,16 @@ describe('MovieService', () => {
     expect(result).toEqual(expectedResponse);
   });
 
+  it('should request getTopRatedMovies', async () => {
+    const httpTesting = TestBed.inject(HttpTestingController);
+    const movie$ = service.getTopRatedMovies(1);
+    const moviePromise = firstValueFrom(movie$);
+
+    const req = httpTesting.expectOne('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1&api_key=8edfd0871c45ff6fbffc33263bdd4fde');
+    expect(req.request.method).toBe('GET');
+
+    req.flush({page: 1, results: [movie], total_pages: 1, total_results: 1});
+    expect(await moviePromise).toEqual({page: 1, results: [movie], total_pages: 1, total_results: 1});
+  });
+
 });
