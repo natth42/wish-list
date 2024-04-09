@@ -1,5 +1,5 @@
 <div class="px-6 content">
-    <app-header class="header" />
+    <app-header class="header" [title]="'Catálogo'" />
     <app-side-menu class="flex justify-center pt-24 menu" />
     <main class="flex flex-col items-center items-start pt-24 main space-y-8">
         <div class="flex w-96">
@@ -10,7 +10,7 @@
                 (keyup.enter)="searchMovie()"/>
             <app-button-icon
                 (click)="searchMovie()"
-                icon="search"
+                icon="heroMagnifyingGlass"
                 iconAlt="buscar filme" />
         </div>
 

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie } from '../../models/movie';
+import { Movie, MovieFavorited } from '../../../../core/models/movie';
 import { ButtonComponent } from "../../../../shared/components/button/button.component";
 
 @Component({
@@ -12,7 +12,7 @@ import { ButtonComponent } from "../../../../shared/components/button/button.com
 })
 export class MovieModalComponent {
   @Input() item!: Movie;
-  public favorites: Movie[] = [];
+  public favorites: MovieFavorited[] = [];
   
   ngOnInit() {
     MicroModal.init();
@@ -21,7 +21,7 @@ export class MovieModalComponent {
 
   addToFavorities() {
     this.item.favorite = !this.item.favorite;
-    this.favorites.push(this.item);
+    this.favorites.push({...this.item, added_at: new Date().toISOString()});
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
   }
 }
