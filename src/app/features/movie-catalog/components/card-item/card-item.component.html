@@ -1,7 +1,7 @@
 <div class="flex items-center justify-center pb-8">
     <div class="mx-auto px-5">
       <div class="max-w-xs cursor-pointer rounded-lg bg-white p-2 shadow max-h-full flex flex-col items-center card">
-        <img class="w-full rounded-lg object-cover object-center card-image" src='https://media.themoviedb.org/t/p/w220_and_h330_face/{{this.item.poster_path}}' height="300px" width="465px" alt="product" />
+        <img loading="lazy" class="w-full rounded-lg object-cover object-center card-image" src='https://media.themoviedb.org/t/p/w220_and_h330_face/{{this.item.poster_path}}' height="300px" width="465px" alt="product" />
         <p class="my-4 pl-4 font-bold text-gray-800">{{ this.item.title }}</p>
         <div class="flex flex-wrap justify-center gap-2">
           @for (genre of genres; track genre) {
