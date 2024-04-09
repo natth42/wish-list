@@ -1,0 +1,17 @@
+.card-image {
+    max-height: 465px;
+}
+
+.card {
+    max-height: 750px;
+    min-width: 300px;
+}
+
+.card-list {
+    width: 85%;
+}
+
+.image {
+    height: 400px; 
+    width: 300px;
+}
