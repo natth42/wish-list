@@ -4,11 +4,11 @@ import { SideMenuComponent } from "@core/components/side-menu/side-menu.componen
 import { MovieService } from '@core/services/movies/movie.service';
 import { Genre, GenreResponse, MovieResponse } from '@core/models/movie';
 import { Observable, catchError, of } from 'rxjs';
-import { CardItemComponent } from "../../../wish-list/components/card-item/card-item.component";
 import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 import { CommonModule } from '@angular/common';
 import { ButtonIconComponent } from "@shared/components/button-icon/button-icon.component";
 import { Router } from '@angular/router';
+import { CardItemComponent } from '../../components/card-item/card-item.component';
 
 @Component({
     selector: 'app-ranking',
@@ -60,7 +60,7 @@ export class RankingComponent {
     return genreIds.map((genreId) => this.getGenreName(genreId));
   }
 
-  goToCatalog() {
-    this.router.navigate(['/catalog']);
+  goToCatalog(movieTitle: string) {
+    this.router.navigate(['/catalog'], { queryParams: { title: movieTitle } });
   }
 }

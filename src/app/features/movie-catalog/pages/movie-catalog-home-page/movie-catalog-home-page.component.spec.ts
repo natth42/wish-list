@@ -6,10 +6,14 @@ import { MovieService } from '@core/services/movies/movie.service';
 import { Genre, GenreResponse, Movie, MovieResponse } from '@core/models/movie';
 import { of } from 'rxjs';
 
+import {provideRouter} from '@angular/router';
+import {RouterTestingHarness} from '@angular/router/testing';
+
 describe('MovieCatalogHomePageComponent', () => {
   let component: MovieCatalogHomePageComponent;
   let movieService: MovieService;
   let fixture: ComponentFixture<MovieCatalogHomePageComponent>;
+  let harness: RouterTestingHarness;
   const movie: Movie = {
     id: 1,
     title: 'Star Wars: Return of the Jedi',
@@ -44,11 +48,15 @@ describe('MovieCatalogHomePageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MovieCatalogHomePageComponent],
       providers: [
-        provideHttpClient()
-      ]
+        provideHttpClient(),
+        provideRouter([
+          {path: 'catalog', component: MovieCatalogHomePageComponent}
+        ]),
+      ],
     })
     .compileComponents();
     
+    harness = await RouterTestingHarness.create();
     fixture = TestBed.createComponent(MovieCatalogHomePageComponent);
     movieService = TestBed.inject(MovieService);
     spyOn(movieService, 'getMovies').and.returnValue(of(movies));
@@ -86,12 +94,6 @@ describe('MovieCatalogHomePageComponent', () => {
     expect(component.search).toBe('Avengers');
   });
 
-  it('should initialize movieList$ and call getMovies on ngOnInit', () => {
-    component.ngOnInit();
-    expect(component.movieList$).toBeDefined();
-    expect(movieService.getMovies).toHaveBeenCalledWith(component.currentPage);
-  });
-
   it('should change the current page and call searchMovie on changePage', () => {
     spyOn(component, 'searchMovie');
     const page = 2;
@@ -127,5 +129,24 @@ describe('MovieCatalogHomePageComponent', () => {
     component.genreList = genres;
     const result = component.getGenreNames(genreIds);
     expect(result).toEqual(genreNames);
+  });
+  
+  it('should set favorites from localStorage on ngOnInit', () => {
+    const favorites: Movie[] = [movie];
+    spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(favorites));
+  
+    component.ngOnInit();
+  
+    expect(component.favorites).toEqual(favorites);
+  });
+  
+  it('should call getMovieGenres and searchMovie on ngOnInit', () => {
+    spyOn(component, 'getMovieGenres');
+    spyOn(component, 'searchMovie');
+  
+    component.ngOnInit();
+  
+    expect(component.getMovieGenres).toHaveBeenCalled();
+    expect(component.searchMovie).toHaveBeenCalled();
   });
 });

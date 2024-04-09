@@ -10,9 +10,9 @@
                     @for (movie of movies.results; track movie.id) {
                         <div class="grid">
                             <div class="flex justify-end button-icon">
-                                <app-button-icon class="close-icon" [icon]="'heroChevronRight'" [iconAlt]="'Ver detalhes'" (click)="goToCatalog()" />
+                                <app-button-icon class="close-icon" [icon]="'heroChevronRight'" [iconAlt]="'Ver detalhes'" (click)="goToCatalog(movie.title)" />
                             </div>
-                            <app-card-list-item
+                            <app-ranking-card-list-item
                             [item]="movie" 
                             [genres]="this.getGenreNames(movie.genre_ids)" />
                         </div>

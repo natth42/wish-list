@@ -11,6 +11,8 @@ import { ButtonIconComponent } from "@shared/components/button-icon/button-icon.
 import { InputComponent } from "@shared/components/input/input.component";
 import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
     selector: 'app-movie-catalog-home-page',
     standalone: true,
@@ -27,12 +29,13 @@ export class MovieCatalogHomePageComponent {
   public currentPage: number = 1;
   public favorites: Movie[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.search = this.route.snapshot.queryParamMap.get('title') ?? '';
     localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites') || '') : [];
     this.getMovieGenres();
-    this.getMovies();
+    this.searchMovie();
   }
 
   changePage(page: any) {

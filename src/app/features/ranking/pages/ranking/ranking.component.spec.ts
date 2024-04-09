@@ -78,7 +78,7 @@ describe('RankingComponent', () => {
 
   it('should navigate to catalog on goToCatalog', () => {
     spyOn(router, 'navigate');
-    component.goToCatalog();
-    expect(router.navigate).toHaveBeenCalledWith(['/catalog']);
+    component.goToCatalog('Star Wars');
+    expect(router.navigate).toHaveBeenCalledWith([ '/catalog' ], Object({ queryParams: Object({ title: 'Star Wars' }) }));
   });
 });
