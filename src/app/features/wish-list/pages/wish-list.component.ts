@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../../../core/components/header/header.component";
-import { SideMenuComponent } from "../../../core/components/side-menu/side-menu.component";
-import { Genre, GenreResponse, MovieFavorited } from '../../../core/models/movie';
-import { MovieService } from '../../../core/services/movies/movie.service';
-import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { HeaderComponent } from "@core/components/header/header.component";
+import { SideMenuComponent } from "@core/components/side-menu/side-menu.component";
+import { Genre, GenreResponse, MovieFavorited } from '@core/models/movie';
+import { MovieService } from '@core/services/movies/movie.service';
+import { ButtonComponent } from "@shared/components/button/button.component";
 
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { heroUsers } from '@ng-icons/heroicons/outline';
-import { ButtonIconComponent } from "../../../shared/components/button-icon/button-icon.component";
+import { ButtonIconComponent } from "@shared/components/button-icon/button-icon.component";
 import { CardItemComponent } from '../components/card-item/card-item.component';
 
 @Component({

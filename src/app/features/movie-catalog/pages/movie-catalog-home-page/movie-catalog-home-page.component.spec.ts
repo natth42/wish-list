@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieCatalogHomePageComponent } from './movie-catalog-home-page.component';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { MovieService } from '../../../../core/services/movies/movie.service';
-import { Genre, GenreResponse, Movie, MovieResponse } from '../../../../core/models/movie';
+import { provideHttpClient } from '@angular/common/http';
+import { MovieService } from '@core/services/movies/movie.service';
+import { Genre, GenreResponse, Movie, MovieResponse } from '@core/models/movie';
 import { of } from 'rxjs';
 
 describe('MovieCatalogHomePageComponent', () => {

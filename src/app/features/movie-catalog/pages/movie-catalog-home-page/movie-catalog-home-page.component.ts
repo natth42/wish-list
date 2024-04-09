@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../../../core/components/header/header.component';
-import { SideMenuComponent } from '../../../../core/components/side-menu/side-menu.component';
+import { HeaderComponent } from '@core/components/header/header.component';
+import { SideMenuComponent } from '@core/components/side-menu/side-menu.component';
 import { CardItemComponent } from '../../components/card-item/card-item.component';
-import { Genre, GenreResponse, Movie, MovieResponse } from '../../../../core/models/movie';
-import { MovieService } from '../../../../core/services/movies/movie.service';
+import { Genre, GenreResponse, Movie, MovieResponse } from '@core/models/movie';
+import { MovieService } from '@core/services/movies/movie.service';
 import { Observable, catchError, map, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from "../../../../shared/components/button/button.component";
-import { ButtonIconComponent } from "../../../../shared/components/button-icon/button-icon.component";
-import { InputComponent } from "../../../../shared/components/input/input.component";
-import { PaginationComponent } from "../../../../shared/components/pagination/pagination.component";
+import { ButtonComponent } from "@shared/components/button/button.component";
+import { ButtonIconComponent } from "@shared/components/button-icon/button-icon.component";
+import { InputComponent } from "@shared/components/input/input.component";
+import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 
 @Component({
     selector: 'app-movie-catalog-home-page',

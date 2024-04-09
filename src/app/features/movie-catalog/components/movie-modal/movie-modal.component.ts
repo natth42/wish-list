@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie, MovieFavorited } from '../../../../core/models/movie';
-import { ButtonComponent } from "../../../../shared/components/button/button.component";
+import { Movie, MovieFavorited } from '@core/models/movie';
+import { ButtonComponent } from "@shared/components/button/button.component";
 
 @Component({
     selector: 'app-movie-modal',

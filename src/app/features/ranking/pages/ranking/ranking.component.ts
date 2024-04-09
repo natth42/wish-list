@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../../../../core/components/header/header.component";
-import { SideMenuComponent } from "../../../../core/components/side-menu/side-menu.component";
-import { MovieService } from '../../../../core/services/movies/movie.service';
-import { Genre, GenreResponse, MovieResponse } from '../../../../core/models/movie';
+import { HeaderComponent } from "@core/components/header/header.component";
+import { SideMenuComponent } from "@core/components/side-menu/side-menu.component";
+import { MovieService } from '@core/services/movies/movie.service';
+import { Genre, GenreResponse, MovieResponse } from '@core/models/movie';
 import { Observable, catchError, of } from 'rxjs';
 import { CardItemComponent } from "../../../wish-list/components/card-item/card-item.component";
-import { PaginationComponent } from "../../../../shared/components/pagination/pagination.component";
+import { PaginationComponent } from "@shared/components/pagination/pagination.component";
 import { CommonModule } from '@angular/common';
-import { ButtonIconComponent } from "../../../../shared/components/button-icon/button-icon.component";
+import { ButtonIconComponent } from "@shared/components/button-icon/button-icon.component";
 import { Router } from '@angular/router';
 
 @Component({

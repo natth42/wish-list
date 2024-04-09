@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie } from '../../../../core/models/movie';
+import { Movie } from '@core/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
-import { ButtonComponent } from "../../../../shared/components/button/button.component";
+import { ButtonComponent } from "@shared/components/button/button.component";
 
 @Component({
     selector: 'app-card-item',

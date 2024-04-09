@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RankingComponent } from './ranking.component';
 import { of } from 'rxjs';
-import { MovieService } from '../../../../core/services/movies/movie.service';
+import { MovieService } from '@core/services/movies/movie.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

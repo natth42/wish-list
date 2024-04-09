@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieModalComponent } from './movie-modal.component';
-import { Movie } from '../../../../core/models/movie';
+import { Movie } from '@core/models/movie';
 
 describe('MovieModalComponent', () => {
   let component: MovieModalComponent;
