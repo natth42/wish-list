@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Movie, MovieFavorited } from '@core/models/movie';
+import { Movie, MovieFavorited } from '@shared/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
 import { ButtonComponent } from "@shared/components/button/button.component";
 

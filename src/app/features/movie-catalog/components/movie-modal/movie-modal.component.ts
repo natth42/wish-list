@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie, MovieFavorited } from '@core/models/movie';
+import { Movie, MovieFavorited } from '@shared/models/movie';
 import { ButtonComponent } from "@shared/components/button/button.component";
 
 @Component({

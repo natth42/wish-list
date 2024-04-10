@@ -19,7 +19,7 @@
                             [iconAlt]="'Remover ' + favorite.title + ' da lista de desejos'"
                             (click)="removeFromFavorites(favorite.id)" />
                         </div>
-                        <app-card-list-item 
+                        <app-card-movie-item
                         [item]="favorite"
                         [genres]="this.getGenreNames(favorite.genre_ids)" />
                     </div>

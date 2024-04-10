@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WishListComponent } from './wish-list.component';
-import { MovieService } from '@core/services/movies/movie.service';
+import { MovieService } from '@shared/services/movies/movie.service';
 import { of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
 

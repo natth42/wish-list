@@ -16,7 +16,7 @@
                                     [iconAlt]="'Ver detalhes de' + movie.title"
                                     (click)="goToCatalog(movie.title)" />
                             </div>
-                            <app-ranking-card-list-item
+                            <app-card-movie-item
                             [item]="movie" 
                             [genres]="this.getGenreNames(movie.genre_ids)" />
                         </div>

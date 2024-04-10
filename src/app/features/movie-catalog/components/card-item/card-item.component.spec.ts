@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardItemComponent } from './card-item.component';
 import { MovieModalComponent } from '../movie-modal/movie-modal.component';
-import { Movie } from '@core/models/movie';
+import { Movie } from '@shared/models/movie';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;

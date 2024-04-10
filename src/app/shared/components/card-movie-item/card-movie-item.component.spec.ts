@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardItemComponent } from './card-item.component';
-import { Movie } from '../../../../core/models/movie';
+import { CardItemComponent } from './card-movie-item.component';
+import { Movie } from '../../models/movie';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;
