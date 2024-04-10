@@ -1,10 +1,29 @@
 .content {
+    overflow-x: hidden;
     height: 100vh;
+    width: 100%;
     display: grid;
     grid-template: "menu header header header" 4rem
                     "menu main main main"
                     "menu main main main"
                     "menu main main main";
+}
+
+@media (max-width: 700px) {
+    .content {
+        overflow-x: hidden;
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        grid-template: "header" 4rem
+                        "menu"
+                        "main"
+                        "main";
+    }
+
+    .title {
+        width: 80%;
+    }
 }
 
 .main {
@@ -14,7 +33,6 @@
 
 .header {
     grid-area: header;
-    width: 85%;
 }
 
 .menu {
@@ -27,5 +45,5 @@
 }
 
 .button-icon {
-    width: 86%;
+    width: 81%;
 }

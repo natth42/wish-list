@@ -1,15 +1,15 @@
-<div class="px-6 content">
+<div class="md:px-6 content">
     <app-header class="header" [title]="'Lista de desejos'" />
-    <app-side-menu class="flex justify-center pt-24 menu" />
-    <main class="flex flex-col items-center items-start pt-24 main space-y-8">
-        <h1 class="grow text-center text-3xl font-bold">Sua lista de desejos</h1>
-        <div class="flex items-center pt-6 gap-6">
-            <h2 class="grow text-center text-3xl font-bold">Ordenar por:</h2>
+    <app-side-menu class="flex justify-center pt-6 md:pt-24 menu" />
+    <main class="flex flex-col main space-y-8 md:pl-2">
+        <h1 class="grow text-center text-xl md:text-3xl pt-6 font-bold title">Sua lista de desejos</h1>
+        <div class="flex justify-center pt-6 gap-2 md:gap-6">
+            <h2 class="text-center text-xl md:text-3xl font-bold">Ordenar por:</h2>
             <app-button aria-label="Ordenar lista de filmes favoritos por mais novo" [text]="'Mais Novo'" (click)="orderBy('newst')" />
             <app-button aria-label="Ordenar lista de filmes favoritos por mais antigo" [text]="'Mais Antigo'" (click)="orderBy('older')" />
         </div>
         @if(this.favorites.length > 0) {
-            <div class="flex flex-col flex-wrap justify-center w-screen">
+            <div class="flex flex-col">
                 @for (favorite of this.favorites; track favorite.id) {
                     <div class="grid">
                         <div class="flex justify-end button-icon">

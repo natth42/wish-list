@@ -8,10 +8,22 @@
 }
 
 .card-list {
-    width: 85%;
+    width: 80%;
 }
 
 .image {
     height: 400px; 
     width: 300px;
+}
+
+@media (max-width: 700px) {
+    .image {
+        height: 400px; 
+        width: 300px;
+        aspect-ratio: 1 / 2;
+    }
+
+    .card-list {
+        width: 90%;
+    }
 }
