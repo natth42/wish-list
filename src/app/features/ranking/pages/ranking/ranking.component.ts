@@ -23,12 +23,20 @@ export class RankingComponent implements OnInit{
   public genreList: GenreResponse = { genres: [] };
   public errorMessage: string = '';
   public currentPage: number = 1;
+  public configuration: any = { };
 
   constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {
     this.getMovieGenres();
     this.getTopRatedMovies();
+    this.getMovieConfiguration();
+  }
+
+  getMovieConfiguration() {
+    this.movieService.getConfiguration().subscribe((response) => {
+      this.configuration = response;
+    });
   }
 
   changePage(page: number) {

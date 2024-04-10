@@ -10,7 +10,8 @@
         <main class="modal__content" id="modal-1-content">
           <img 
             class="w-full rounded-lg object-cover object-center card-image"
-            src='https://media.themoviedb.org/t/p/w220_and_h330_face/{{this.item.poster_path}}'
+            src='{{ this.config.images.base_url }}/w500/{{this.item.poster_path}}'
+            (error) ="onImgError($event)"
             [alt]="'poster do filme ' + this.item.title" />
           <p class="pt-6">
             Descrição: {{ this.item.overview }}

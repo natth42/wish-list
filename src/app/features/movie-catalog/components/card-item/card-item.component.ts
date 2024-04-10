@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Movie, MovieFavorited } from '@shared/models/movie';
+import { Configuration, Movie, MovieFavorited } from '@shared/models/movie';
 import { MovieModalComponent } from "../movie-modal/movie-modal.component";
 import { ButtonComponent } from "@shared/components/button/button.component";
 
@@ -15,6 +15,12 @@ export class CardItemComponent implements OnInit {
   item!: Movie;
   @Input()
   genres: string[] = [];
+  @Input() config: Configuration = {
+    images: {
+      base_url: '',
+      secure_base_url: '',
+    }
+  };
   @Output()
   OpenModal = new EventEmitter<void>();
 
@@ -30,6 +36,10 @@ export class CardItemComponent implements OnInit {
     } else {
       this.OpenModal.emit();
     }
+  }
+
+  onImgError(event: any) {
+    event.target.src = './assets/images/poster-placeholder.png';
   }
 
   removeFromFavorites(id: number) {

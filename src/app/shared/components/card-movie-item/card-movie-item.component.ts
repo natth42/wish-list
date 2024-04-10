@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Movie } from '../../models/movie';
+import { Configuration, Movie } from '@shared/models/movie';
 import { ButtonComponent } from "../button/button.component";
 
 @Component({
@@ -14,4 +14,14 @@ export class CardItemComponent {
   item!: Movie;
   @Input()
   genres: string[] = [];
+  @Input() config: Configuration = {
+    images: {
+      base_url: '',
+      secure_base_url: '',
+    }
+  };
+
+  onImgError(event: any) {
+    event.target.src = './assets/images/poster-placeholder.png';
+  }
 }

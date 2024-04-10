@@ -19,6 +19,7 @@ import { CardItemComponent } from '@shared/components/card-movie-item/card-movie
     imports: [HeaderComponent, SideMenuComponent, CardItemComponent, ButtonComponent, NgIconComponent, ButtonIconComponent]
 })
 export class WishListComponent implements OnInit {
+  public configuration: any = { };
   public favorites: Array<MovieFavorited> = [];
   public genreList: GenreResponse = { genres: [] };
   public errorMessage: string = '';
@@ -28,7 +29,13 @@ export class WishListComponent implements OnInit {
   ngOnInit() {
     localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites') || '') : [];
     this.getMovieGenres();
-    console.log(this.favorites);
+    this.getMovieConfiguration();
+  }
+
+  getMovieConfiguration() {
+    this.movieService.getConfiguration().subscribe((response) => {
+      this.configuration = response;
+    });
   }
 
   getMovieGenres() {
@@ -45,6 +52,7 @@ export class WishListComponent implements OnInit {
   getGenreNames(genreIds: number[]): Array<string> {
     return genreIds.map((genreId) => this.getGenreName(genreId));
   }
+
   orderBy(type: string) {
     if (type === 'newst') {
       this.favorites = this.favorites.sort((a, b) => new Date(a.added_at).getTime() - new Date(b.added_at).getTime());
@@ -52,6 +60,7 @@ export class WishListComponent implements OnInit {
       this.favorites = this.favorites.sort((a, b) => new Date(b.added_at).getTime() - new Date(a.added_at).getTime());
     }
   }
+
   removeFromFavorites(id: number) {
     this.favorites = this.favorites.filter((favorite) => favorite.id !== id);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));

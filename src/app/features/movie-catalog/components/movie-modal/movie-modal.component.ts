@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import MicroModal from 'micromodal';
-import { Movie, MovieFavorited } from '@shared/models/movie';
+import { Configuration, Movie, MovieFavorited } from '@shared/models/movie';
 import { ButtonComponent } from "@shared/components/button/button.component";
 
 @Component({
@@ -14,6 +14,12 @@ export class MovieModalComponent implements OnInit{
   public favorites: MovieFavorited[] = [];
 
   @Input() item!: Movie;
+  @Input() config: Configuration = {
+    images: {
+      base_url: '',
+      secure_base_url: '',
+    }
+  };
   
   ngOnInit() {
     MicroModal.init();
@@ -24,5 +30,9 @@ export class MovieModalComponent implements OnInit{
     this.item.favorite = !this.item.favorite;
     this.favorites.push({...this.item, added_at: new Date().toISOString()});
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
+  }
+
+  onImgError(event: any) {
+    event.target.src = './assets/images/poster-placeholder.png';
   }
 }

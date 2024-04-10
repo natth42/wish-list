@@ -20,6 +20,7 @@
                             (click)="removeFromFavorites(favorite.id)" />
                         </div>
                         <app-card-movie-item
+                        [config]="this.configuration"
                         [item]="favorite"
                         [genres]="this.getGenreNames(favorite.genre_ids)" />
                     </div>

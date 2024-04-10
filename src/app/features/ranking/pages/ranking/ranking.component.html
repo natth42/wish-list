@@ -17,6 +17,7 @@
                                     (click)="goToCatalog(movie.title)" />
                             </div>
                             <app-card-movie-item
+                            [config]="this.configuration"
                             [item]="movie" 
                             [genres]="this.getGenreNames(movie.genre_ids)" />
                         </div>

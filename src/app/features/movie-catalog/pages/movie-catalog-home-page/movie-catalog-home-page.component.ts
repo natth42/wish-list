@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '@core/components/header/header.component';
 import { SideMenuComponent } from '@core/components/side-menu/side-menu.component';
 import { CardItemComponent } from '../../components/card-item/card-item.component';
-import { Genre, GenreResponse, Movie, MovieResponse } from '@shared/models/movie';
+import { Configuration, Genre, GenreResponse, Movie, MovieResponse } from '@shared/models/movie';
 import { MovieService } from '@shared/services/movies/movie.service';
 import { Observable, catchError, map, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -25,6 +25,12 @@ import MicroModal from 'micromodal';
 export class MovieCatalogHomePageComponent implements OnInit{
   movieList$!: Observable<MovieResponse>;
   public genreList: GenreResponse = { genres: [] };
+  public configuration: Configuration = {
+    images: {
+      base_url: '',
+      secure_base_url: '',
+    }
+   };
   
   public search: string = '';
   public errorMessage: string = '';
@@ -48,6 +54,7 @@ export class MovieCatalogHomePageComponent implements OnInit{
     this.search = this.route.snapshot.queryParamMap.get('title') ?? '';
     localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites') || '') : [];
     this.getMovieGenres();
+    this.getMovieConfiguration();
     this.searchMovie();
   }
 
@@ -72,6 +79,12 @@ export class MovieCatalogHomePageComponent implements OnInit{
   getMovieGenres() {
     this.movieService.getGenres().subscribe((response) => {
       this.genreList = response;
+    });
+  }
+
+  getMovieConfiguration() {
+    this.movieService.getConfiguration().subscribe((response) => {
+      this.configuration = response;
     });
   }
 

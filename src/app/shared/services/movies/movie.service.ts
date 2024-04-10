@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GenreResponse, MovieResponse, MovieSearchResponse } from '../../models/movie';
+import { Configuration, GenreResponse, MovieResponse, MovieSearchResponse } from '../../models/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class MovieService {
 
   getGenres () {
     return this.http.get<GenreResponse>('https://api.themoviedb.org/3/genre/movie/list?language=pt-BR&api_key=8edfd0871c45ff6fbffc33263bdd4fde');
+  }
+
+  getConfiguration () {
+    return this.http.get<Configuration>('https://api.themoviedb.org/3/configuration?api_key=8edfd0871c45ff6fbffc33263bdd4fde');
   }
 }

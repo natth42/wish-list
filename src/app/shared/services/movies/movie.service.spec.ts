@@ -94,4 +94,15 @@ describe('MovieService', () => {
     expect(await moviePromise).toEqual({page: 1, results: [movie], total_pages: 1, total_results: 1});
   });
 
+  it('should request getConfiguration', async () => {
+    const httpTesting = TestBed.inject(HttpTestingController);
+    const movie$ = service.getConfiguration();
+    const moviePromise = firstValueFrom(movie$);
+
+    const req = httpTesting.expectOne('https://api.themoviedb.org/3/configuration?api_key=8edfd0871c45ff6fbffc33263bdd4fde');
+    expect(req.request.method).toBe('GET');
+
+    req.flush({images: {base_url: 'http://image.tmdb.org/t/p/', secure_base_url: 'https://image.tmdb.org/t/p/'}});
+    expect(await moviePromise).toEqual({images: {base_url: 'http://image.tmdb.org/t/p/', secure_base_url: 'https://image.tmdb.org/t/p/'}});
+  });
 });

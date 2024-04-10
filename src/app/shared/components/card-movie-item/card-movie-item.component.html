@@ -1,6 +1,10 @@
 <div class="flex pb-8 justify-center">
   <div class="rounded-lg bg-white md:p-2 shadow flex items-center card-list md:space-x-8">
-    <img class="w-full rounded-lg image" src='https://media.themoviedb.org/t/p/w220_and_h330_face/{{this.item.poster_path}}' alt="product" />
+    <img 
+      class="w-full rounded-lg image"
+      src='{{ this.config.images.base_url }}/w500/{{this.item.poster_path}}'
+      (error) ="onImgError($event)"
+      [alt]="'poster do filme ' + this.item.title" />
     <div class="flex flex-col items-center">
       <p class="my-4 pl-4 font-bold text-gray-800">{{ this.item.title }}</p>
       <div class="flex flex-wrap justify-center gap-2">
