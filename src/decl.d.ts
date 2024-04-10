@@ -1,0 +1,1 @@
+declare module 'microfrontend1/Module';
