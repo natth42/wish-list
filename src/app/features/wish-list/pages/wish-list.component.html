@@ -13,7 +13,11 @@
                 @for (favorite of this.favorites; track favorite.id) {
                     <div class="grid">
                         <div class="flex justify-end button-icon">
-                            <app-button-icon class="close-icon" [icon]="'heroXMark'" [iconAlt]="'Remover favorito'" (click)="removeFromFavorites(favorite.id)" />
+                            <app-button-icon
+                            class="close-icon"
+                            [icon]="'heroXMark'"
+                            [iconAlt]="'Remover ' + favorite.title + ' da lista de desejos'"
+                            (click)="removeFromFavorites(favorite.id)" />
                         </div>
                         <app-card-list-item 
                         [item]="favorite"
