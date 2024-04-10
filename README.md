@@ -42,3 +42,5 @@ Rode `ng test` ou `npm test` para executar os testes unitarios pelo [Karma](http
 - Features é onde incluimos nossas páginas e suas estruturas especificas
 - Shared é a pasta responsável por componentes, services, models e tudo o que for compartilhado entre toda a aplicação e não é expecifico da aplicação, por exemplo um botão ou componente de paginação.
 
+## Arquitetura
+
