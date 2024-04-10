@@ -100,7 +100,7 @@ export class MovieCatalogHomePageComponent implements OnInit{
     this.modalInfo = movie;
     setTimeout(() => {
       MicroModal.show(`modal-movies`);
-    }, 100)
+    })
   }
 }
 

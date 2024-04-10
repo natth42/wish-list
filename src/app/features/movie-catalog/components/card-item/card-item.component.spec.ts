@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardItemComponent } from './card-item.component';
 import { MovieModalComponent } from '../movie-modal/movie-modal.component';
 import { Movie } from '@core/models/movie';
-import MicroModal from 'micromodal';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;
@@ -62,10 +61,10 @@ describe('CardItemComponent', () => {
     expect(spy).toHaveBeenCalledWith(1);
   });
   
-  it('should open modal if item is not favorite', () => {
-    const spy = spyOn(MicroModal, 'show');
+  it('should emit OpenModal event if item is not favorite', () => {
+    spyOn(component.OpenModal, 'emit');
     component.item.favorite = false;
     component.handleClick(1);
-    expect(spy).toHaveBeenCalledWith('modal-1');
+    expect(component.OpenModal.emit).toHaveBeenCalled();
   });
 });

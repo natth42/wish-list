@@ -6,6 +6,7 @@ import { Movie } from '@core/models/movie';
 describe('MovieModalComponent', () => {
   let component: MovieModalComponent;
   let fixture: ComponentFixture<MovieModalComponent>;
+  let store = {};
   const movie: Movie = {
     id: 1,
     title: 'Star Wars: Return of the Jedi',
