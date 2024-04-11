@@ -59,7 +59,7 @@ Melhores práticas: >70
 - Jasmine: O Angular traz por padrão o Jasmine, e por isso foi utilizado para criação de testes unitários.
 - Micromodal: Micromodal.js é uma biblioteca de modais leve, configurável e compatível com acessibilidade, escrita em JavaScript puro. Foi escolhida para ser utilizada por ser pequena e acessível.
 - Tailwind CSS: Para estilização, foi utilizado o Tailwind CSS, um framework CSS de utilidades com diversos tokens de design pre definidos. Foi escolhido pois é uma biblioteca leve, de uso simples e versátil.
-- API: A API do The Movie Database (TMDB) foi utilizada para a listagem dos filmes, e o LocalStorage foi utilizado para adicionar os filmes na lista de desejos.
+- API: A API do [The Movie Database (TMDB)](https://developer.themoviedb.org/docs/getting-started) foi utilizada para a listagem dos filmes, e o LocalStorage foi utilizado para adicionar os filmes na lista de desejos.
 
 ## Roadmap
 
