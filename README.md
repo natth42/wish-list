@@ -1,30 +1,30 @@
-# Lista de Desejos
+# ✨	Lista de Desejos
 
 Este projeto foi gerado usando [Angular CLI](https://github.com/angular/angular-cli) na versão 17.3.3.
 
-## Descrição
+## 📋 Descrição
 
 Esta aplicação permite que os usuários tenham acesso a um catálogo de filmes, onde podem realizar buscas, adicionar filmes à sua lista de desejos e visualizar rankings dos melhores filmes.
 
 A aplicação atualmente está hospedada no GitHub Pages, no link: https://natth42.github.io/wish-list/catalog.
 
-## Desenvolvimento Local
+## ⌨️ Desenvolvimento Local
 
 Para executar o projeto localmente, basta digitar `ng serve` ou `npm start` no seu terminal, e um servidor será iniciado em `http://localhost:4200/`. Além disso, a aplicação será atualizada automaticamente sempre que houver alterações nos arquivos.
 
-## Automação
+## 🔧 Automação
 
 Execute `ng generate component nome-do-componente` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`. Esta é uma funcionalidade de conveniência fornecida pelo Angular CLI.
 
-## Build
+## ⚙️ Build
 
 Execute `ng build` para construir o projeto. Os artefatos de construção serão armazenados na pasta `dist/`.
 
-## Executando Testes Unitários
+## 🔩 Executando Testes Unitários
 
 Execute `ng test` ou `npm test` para executar os testes unitários via [Karma](https://karma-runner.github.io).
 
-## Arquitetura
+## 📦 Arquitetura
 
 O projeto foi organizado da seguinte forma:
 
@@ -53,7 +53,7 @@ Performance: >80
 Acessibilidade: 100
 Melhores práticas: >70
 
-## Tecnologias
+## 🛠️ Construído com
 
 - Angular: Este projeto foi construído utilizando Angular 17.
 - Jasmine: O Angular traz por padrão o Jasmine, e por isso foi utilizado para criação de testes unitários.
@@ -61,10 +61,13 @@ Melhores práticas: >70
 - Tailwind CSS: Para estilização, foi utilizado o Tailwind CSS, um framework CSS de utilidades com diversos tokens de design pre definidos. Foi escolhido pois é uma biblioteca leve, de uso simples e versátil.
 - API: A API do [The Movie Database (TMDB)](https://developer.themoviedb.org/docs/getting-started) foi utilizada para a listagem dos filmes, e o LocalStorage foi utilizado para adicionar os filmes na lista de desejos.
 
-## Roadmap
+## 🚀 Roadmap
 
 A seguir estão alguns dos próximos itens a serem implementados:
 
 - [ ] Melhorias no layout.
 - [ ] Adicionar GitHub Actions com etapas de testes unitários, testes end-to-end, Lighthouse e implantação.
 - [ ] Suporte à internacionalização.
+- [ ] Suporte à microfrontend
+
+Obs: não consegui adicionar suporte ao microfrontend no projeto, mas seria o próximo passo fazer a implementação utilizando o [module federate](https://github.com/angular-architects/module-federation-plugin)
