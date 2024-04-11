@@ -50,8 +50,6 @@ Essa estrutura de pasta foi criada para facilitar a manutenção e manter a orga
 
 Além disso este projeto foi desenvolvido pensando em qualidade, por isso altualmente tem um coverage de teste de mais de 80% na aplicação e temos as seguintes notas no lighthouse:
 
-Por fim, o projeto foi preparado para receber um microfrontend utilizando module federate em uma rota /admin que poderia ser uma extensão do projeto, mas como a criação de um segundo repositório levaria mais tempo não foi implementado.
-
 ## Tecnologias
 
 - Angular: Este projeto foi construído utilizando Angular 17.
@@ -67,5 +65,3 @@ A seguir estão alguns dos próximos itens a serem implementados:
 - [ ] Melhorias no layout.
 - [ ] Adicionar GitHub Actions com etapas de testes unitários, testes end-to-end, Lighthouse e implantação.
 - [ ] Suporte à internacionalização.
-- [ ] Finalizar implementação do segundo microfrontend
-- [ ] Separar variaveis de ambiente

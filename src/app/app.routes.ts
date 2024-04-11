@@ -9,10 +9,5 @@ export const routes: Routes = [
     { path: 'catalog', component: MovieCatalogHomePageComponent },
     { path: 'wish-list', component: WishListComponent },
     { path: 'ranking', component: RankingComponent },
-    // {
-    //     path: 'admin',
-    //     loadChildren: () => import('microfrontend1/Module')
-    //       .then(m => m.AdminModule)
-    //  },
     { path: '**', component: PageNotFoundComponent }
 ];
