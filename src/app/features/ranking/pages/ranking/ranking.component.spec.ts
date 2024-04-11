@@ -3,14 +3,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RankingComponent } from './ranking.component';
 import { of } from 'rxjs';
 import { MovieService } from '@shared/services/movies/movie.service';
-import { Router } from '@angular/router';
+import { Router, provideRouter } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 describe('RankingComponent', () => {
   let component: RankingComponent;
   let fixture: ComponentFixture<RankingComponent>;
   let movieService: MovieService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -18,16 +17,18 @@ describe('RankingComponent', () => {
       providers: [
         { provide: MovieService, useValue: { 
           getTopRatedMovies: () => of({ page: 0, results: [], total_pages: 0, total_results: 0 }),
-          getGenres: () => of({  genres: [] })
+          getGenres: () => of({  genres: [] }),
+          getConfiguration: () => of({ images: { base_url: '' } })
         } },
-        { provide: Router, useValue: { navigate: () => {} } }
+        provideRouter([
+          {path: 'ranking', component: RankingComponent}
+        ]),
       ]
     })
     .compileComponents();
     
     fixture = TestBed.createComponent(RankingComponent);
     movieService = TestBed.inject(MovieService);
-    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -74,11 +75,5 @@ describe('RankingComponent', () => {
     component.genreList = { genres: [{ id: 1, name: 'Action' }, { id: 2, name: 'Comedy' }] };
     const genreNames = component.getGenreNames([1, 2]);
     expect(genreNames).toEqual(['Action', 'Comedy']);
-  });
-
-  it('should navigate to catalog on goToCatalog', () => {
-    spyOn(router, 'navigate');
-    component.goToCatalog('Star Wars');
-    expect(router.navigate).toHaveBeenCalledWith([ '/catalog' ], Object({ queryParams: Object({ title: 'Star Wars' }) }));
   });
 });

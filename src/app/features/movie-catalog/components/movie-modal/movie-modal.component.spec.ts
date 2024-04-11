@@ -1,28 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieModalComponent } from './movie-modal.component';
-import { Movie } from '@shared/models/movie';
+import { Movie, MovieFavorited } from '@shared/models/movie';
+import { favoriteListMock, movieMock } from '@shared/mocks/movies';
 
 describe('MovieModalComponent', () => {
   let component: MovieModalComponent;
   let fixture: ComponentFixture<MovieModalComponent>;
   let store = {};
-  const movie: Movie = {
-    id: 1,
-    title: 'Star Wars: Return of the Jedi',
-    adult: false,
-    backdrop_path: '',
-    genre_ids: [1],
-    original_language: '',
-    original_title: '',
-    overview: 'resumo',
-    popularity: 0,
-    poster_path: '/p1LbrdJ53dGfEhRopG71akfzOVu.jpg',
-    release_date: '',
-    video: false,
-    vote_average: 0,
-    vote_count: 0
-  };
+  const movie: Movie = {...movieMock};
+
+  const favorites: Array<MovieFavorited> = favoriteListMock;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,5 +26,41 @@ describe('MovieModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set item input', () => {
+    const imgElement = fixture.nativeElement.querySelector('img');
+    spyOn(imgElement, 'addEventListener');
+    component.onImgError({ target: imgElement });
+    expect(imgElement.src).toContain('/assets/images/poster-placeholder.png');
+  });
+
+  it('should initialize favorites array', () => {
+    expect(component.favorites).toEqual([]);
+  });
+
+  it('should set favorites array from localStorage if it exists', () => {
+    spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(favorites));
+    component.ngOnInit();
+    expect(component.favorites).toEqual(favorites);
+  });
+  
+  it('should set favorites array to an empty array if localStorage does not exist', () => {
+    spyOn(localStorage, 'getItem').and.returnValue(null);
+    component.ngOnInit();
+    expect(component.favorites).toEqual([]);
+  });
+
+  it('should set favorites array to an empty array if localStorage does not exist', () => {
+    spyOn(localStorage, 'getItem').and.returnValue(null);
+    component.ngOnInit();
+    expect(component.favorites).toEqual([]);
+  });
+
+  it('should add item to favorites array and update localStorage', () => {
+    component.favorites = favorites;
+    spyOn(localStorage, 'setItem');
+    component.addToFavorities();
+    expect(localStorage.setItem).toHaveBeenCalledWith('favorites', JSON.stringify(component.favorites));
   });
 });

@@ -48,7 +48,7 @@ O projeto foi organizado da seguinte forma:
 
 Essa estrutura de pasta foi criada para facilitar a manutenção e manter a organização de acordo com o crescimento da aplicação.
 
-Além disso este projeto foi desenvolvido pensando em qualidade, por isso altualmente tem um coverage de teste de mais de 80% na aplicação e temos as seguintes notas no lighthouse: 
+Além disso este projeto foi desenvolvido pensando em qualidade, por isso altualmente tem um coverage de teste de mais de 80% na aplicação e temos as seguintes notas no lighthouse:
 
 Por fim, o projeto foi preparado para receber um microfrontend utilizando module federate em uma rota /admin que poderia ser uma extensão do projeto, mas como a criação de um segundo repositório levaria mais tempo não foi implementado.
 

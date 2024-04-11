@@ -4,69 +4,27 @@ import { WishListComponent } from './wish-list.component';
 import { MovieService } from '@shared/services/movies/movie.service';
 import { of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { MovieFavorited } from '@shared/models/movie';
+import { favoriteListMock } from '@shared/mocks/movies';
 
 describe('WishListComponent', () => {
   let component: WishListComponent;
   let fixture: ComponentFixture<WishListComponent>;
   let movieService: MovieService;
-  const favorites = [
-    {
-      id: 1,
-      added_at: '2022-01-01',
-      adult: false,
-      backdrop_path: '',
-      genre_ids: [1],
-      original_language: '',
-      original_title: '',
-      overview: '',
-      popularity: 0,
-      poster_path: '',
-      release_date: '',
-      title: '',
-      video: false,
-      vote_average: 0,
-      vote_count: 0
-    },
-    {
-      id: 2,
-      added_at: '2022-02-01',
-      adult: false,
-      backdrop_path: '',
-      genre_ids: [2],
-      original_language: '',
-      original_title: '',
-      overview: '',
-      popularity: 0,
-      poster_path: '',
-      release_date: '',
-      title: '',
-      video: false,
-      vote_average: 0,
-      vote_count: 0
-    },
-    {
-      id: 3,
-      added_at: '2022-03-01',
-      adult: false,
-      backdrop_path: '',
-      genre_ids: [4],
-      original_language: '',
-      original_title: '',
-      overview: '',
-      popularity: 0,
-      poster_path: '',
-      release_date: '',
-      title: '',
-      video: false,
-      vote_average: 0,
-      vote_count: 0
-    }
+  const favorites: Array<MovieFavorited> = [
+    {...favoriteListMock[0]},
+    {...favoriteListMock[1]},
+    {...favoriteListMock[2]}
   ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [WishListComponent],
       providers: [
+        provideRouter([
+          {path: 'wish-list', component: WishListComponent}
+        ]),
         provideHttpClient()
       ]
     })
@@ -105,11 +63,19 @@ describe('WishListComponent', () => {
     component.ngOnInit();
     expect(component.favorites).toEqual(favorites);
   });
-
-  it('should not set favorites array from localStorage if it does not exist', () => {
+  
+  it('should set favorites array to an empty array if localStorage does not exist', () => {
     spyOn(localStorage, 'getItem').and.returnValue(null);
     component.ngOnInit();
     expect(component.favorites).toEqual([]);
+  });
+  
+  it('should call getMovieGenres and getMovieConfiguration methods on ngOnInit', () => {
+    spyOn(component, 'getMovieGenres');
+    spyOn(component, 'getMovieConfiguration');
+    component.ngOnInit();
+    expect(component.getMovieGenres).toHaveBeenCalled();
+    expect(component.getMovieConfiguration).toHaveBeenCalled();
   });
 
   it('should call movieService.getGenres method and set genreList', () => {

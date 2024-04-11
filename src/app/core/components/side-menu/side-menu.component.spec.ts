@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SideMenuComponent } from './side-menu.component';
+import { provideRouter } from '@angular/router';
+import { MovieCatalogHomePageComponent } from '../../../features/movie-catalog/pages/movie-catalog-home-page/movie-catalog-home-page.component';
+import { WishListComponent } from '../../../features/wish-list/pages/wish-list.component';
+import { RankingComponent } from '../../../features/ranking/pages/ranking/ranking.component';
 
 describe('SideMenuComponent', () => {
   let component: SideMenuComponent;
@@ -8,7 +12,14 @@ describe('SideMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideMenuComponent]
+      imports: [SideMenuComponent],
+      providers: [
+        provideRouter([
+          {path: 'catalog', component: MovieCatalogHomePageComponent},
+          {path: 'wish-list', component: WishListComponent},
+          {path: 'ranking', component: RankingComponent},
+        ]),
+      ]
     })
     .compileComponents();
     

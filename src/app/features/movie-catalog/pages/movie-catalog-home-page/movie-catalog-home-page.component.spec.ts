@@ -3,46 +3,26 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MovieCatalogHomePageComponent } from './movie-catalog-home-page.component';
 import { provideHttpClient } from '@angular/common/http';
 import { MovieService } from '@shared/services/movies/movie.service';
-import { Genre, GenreResponse, Movie, MovieResponse } from '@shared/models/movie';
+import { GenreResponse, Movie, MovieResponse } from '@shared/models/movie';
 import { of } from 'rxjs';
 
 import {provideRouter} from '@angular/router';
 import {RouterTestingHarness} from '@angular/router/testing';
+import { genreResponseMock, movieMock } from '@shared/mocks/movies';
 
 describe('MovieCatalogHomePageComponent', () => {
   let component: MovieCatalogHomePageComponent;
   let movieService: MovieService;
   let fixture: ComponentFixture<MovieCatalogHomePageComponent>;
   let harness: RouterTestingHarness;
-  const movie: Movie = {
-    id: 1,
-    title: 'Star Wars: Return of the Jedi',
-    adult: false,
-    backdrop_path: '',
-    genre_ids: [1],
-    original_language: '',
-    original_title: '',
-    overview: 'resumo',
-    popularity: 0,
-    poster_path: '/p1LbrdJ53dGfEhRopG71akfzOVu.jpg',
-    release_date: '',
-    video: false,
-    vote_average: 0,
-    vote_count: 0,
-    favorite: false
-  };
+  const movie: Movie = movieMock;
   const movies: MovieResponse = {
     page: 1,
     results: [movie],
     total_pages: 1,
     total_results: 1
   };
-  const genres: GenreResponse = {
-    genres: [
-      { id: 1, name: 'Action' },
-      { id: 2, name: 'Adventure' }
-    ]
-  };
+  const genres: GenreResponse = genreResponseMock;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -51,7 +31,7 @@ describe('MovieCatalogHomePageComponent', () => {
         provideHttpClient(),
         provideRouter([
           {path: 'catalog', component: MovieCatalogHomePageComponent}
-        ]),
+        ])
       ],
     })
     .compileComponents();
@@ -124,7 +104,7 @@ describe('MovieCatalogHomePageComponent', () => {
 
   it('should return an array of genre names on getGenreNames', () => {
     const genreIds = [1, 2];
-    const genreNames = ['Action', 'Adventure'];
+    const genreNames = ['Action', 'Comedy'];
     component.genreList = genres;
     const result = component.getGenreNames(genreIds);
     expect(result).toEqual(genreNames);
@@ -147,5 +127,15 @@ describe('MovieCatalogHomePageComponent', () => {
   
     expect(component.getMovieGenres).toHaveBeenCalled();
     expect(component.searchMovie).toHaveBeenCalled();
+  });
+
+  it('should get movie configuration', () => {
+    const configuration = { images: { base_url: '', secure_base_url: ''} };
+    spyOn(movieService, 'getConfiguration').and.returnValue(of(configuration));
+  
+    component.getMovieConfiguration();
+  
+    expect(movieService.getConfiguration).toHaveBeenCalled();
+    expect(component.configuration).toEqual(configuration);
   });
 });

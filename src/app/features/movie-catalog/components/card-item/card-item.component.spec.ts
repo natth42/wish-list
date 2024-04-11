@@ -2,27 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardItemComponent } from './card-item.component';
 import { MovieModalComponent } from '../movie-modal/movie-modal.component';
-import { Movie } from '@shared/models/movie';
+import { Movie, MovieFavorited } from '@shared/models/movie';
+import { favoriteListMock, movieMock } from '@shared/mocks/movies';
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;
   let fixture: ComponentFixture<CardItemComponent>;
-  const movie: Movie = {
-    id: 1,
-    title: 'Star Wars: Return of the Jedi',
-    adult: false,
-    backdrop_path: '',
-    genre_ids: [1],
-    original_language: '',
-    original_title: '',
-    overview: 'resumo',
-    popularity: 0,
-    poster_path: '/p1LbrdJ53dGfEhRopG71akfzOVu.jpg',
-    release_date: '',
-    video: false,
-    vote_average: 0,
-    vote_count: 0
-  };
+  const movie: Movie = {...movieMock};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -66,5 +52,77 @@ describe('CardItemComponent', () => {
     component.item.favorite = false;
     component.handleClick(1);
     expect(component.OpenModal.emit).toHaveBeenCalled();
+  });
+
+  it('should set item input', () => {
+    const imgElement = fixture.nativeElement.querySelector('img');
+    spyOn(imgElement, 'addEventListener');
+    component.onImgError({ target: imgElement });
+    expect(imgElement.src).toContain('/assets/images/poster-placeholder.png');
+  });
+
+  it('should initialize favorites from localStorage', () => {
+    // Arrange
+    const favorites: Array<MovieFavorited> = favoriteListMock;
+    spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(favorites));
+
+    // Act
+    component.ngOnInit();
+
+    // Assert
+    expect(component.favorites).toEqual(favorites);
+    expect(localStorage.getItem).toHaveBeenCalledWith('favorites');
+  });
+
+  it('should initialize favorites as an empty array if localStorage is empty', () => {
+    // Arrange
+    spyOn(localStorage, 'getItem').and.returnValue(null);
+
+    // Act
+    component.ngOnInit();
+
+    // Assert
+    expect(component.favorites).toEqual([]);
+    expect(localStorage.getItem).toHaveBeenCalledWith('favorites');
+  });
+
+  it('should remove from favorites if item is already favorite', () => {
+    const spy = spyOn(component, 'removeFromFavorites');
+    component.item.favorite = true;
+    component.handleClick(1);
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+  
+  it('should remove item from favorites and update localStorage', () => {
+    spyOn(localStorage, 'setItem');
+    const id = 1;
+    component.item.favorite = true;
+    component.favorites = [
+      {
+        id: 1,
+        added_at: '2022-01-01',
+        adult: false,
+        backdrop_path: '',
+        genre_ids: [1],
+        original_language: '',
+        original_title: '',
+        overview: '',
+        popularity: 0,
+        poster_path: '',
+        release_date: '',
+        title: '',
+        video: false,
+        vote_average: 0,
+        vote_count: 0
+      }
+    ];
+  
+    // Act
+    component.removeFromFavorites(id);
+  
+    // Assert
+    expect(component.item.favorite).toBe(false);
+    expect(component.favorites).toEqual([]);
+    expect(localStorage.setItem).toHaveBeenCalledWith('favorites', '[]');
   });
 });
