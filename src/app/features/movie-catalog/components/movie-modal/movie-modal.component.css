@@ -9,6 +9,18 @@
     justify-content: center;
     align-items: center;
   }
+
+
+
+  @media (max-width: 700px) {
+    .card-image {
+      width: 200px;
+    }
+
+    .modal__content {
+      overflow-y: scroll;
+    }
+}
   
   .modal__container {
     background-color: #fff;

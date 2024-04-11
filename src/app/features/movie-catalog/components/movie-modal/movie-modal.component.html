@@ -7,7 +7,7 @@
           </h2>
           <button class="modal__close" aria-label="Fechar essa janela de dialogo" data-micromodal-close></button>
         </header>
-        <main class="modal__content" id="modal-1-content">
+        <main class="flex flex-col items-center modal__content" id="modal-1-content">
           @if (this.config.images.base_url !== '' && this.item.poster_path !== null) {
             <img 
             class="w-full rounded-lg object-cover object-center card-image"
@@ -15,7 +15,7 @@
             (error) ="onImgError($event)"
             [alt]="'poster do filme ' + this.item.title" />
           }
-          <p class="pt-6">
+          <p class="pt-6 text-sm md:text-base">
             Descrição: {{ this.item.overview }}
           </p>
         </main>
