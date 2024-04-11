@@ -8,18 +8,20 @@
           <button class="modal__close" aria-label="Fechar essa janela de dialogo" data-micromodal-close></button>
         </header>
         <main class="modal__content" id="modal-1-content">
-          <img 
+          @if (this.config.images.base_url !== '' && this.item.poster_path !== null) {
+            <img 
             class="w-full rounded-lg object-cover object-center card-image"
             src='{{ this.config.images.base_url }}/w500/{{this.item.poster_path}}'
             (error) ="onImgError($event)"
             [alt]="'poster do filme ' + this.item.title" />
+          }
           <p class="pt-6">
             Descrição: {{ this.item.overview }}
           </p>
         </main>
         <footer class="flex justify-around modal__footer">
           <app-button 
-          [text]="'Adicionar'"
+          [text]="getButtonText()"
           (click)="addToFavorities()" />
           <app-button 
           [text]="'Fechar'"

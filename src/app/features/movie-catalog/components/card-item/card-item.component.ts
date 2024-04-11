@@ -39,7 +39,7 @@ export class CardItemComponent implements OnInit {
   }
 
   onImgError(event: any) {
-    event.target.src = './assets/images/poster-placeholder.png';
+    event.target.src = 'https://via.placeholder.com/300x450.png?text=Image+not+found';
   }
 
   removeFromFavorites(id: number) {

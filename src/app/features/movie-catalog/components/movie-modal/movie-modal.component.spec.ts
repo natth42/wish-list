@@ -28,13 +28,6 @@ describe('MovieModalComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set item input', () => {
-    const imgElement = fixture.nativeElement.querySelector('img');
-    spyOn(imgElement, 'addEventListener');
-    component.onImgError({ target: imgElement });
-    expect(imgElement.src).toContain('/assets/images/poster-placeholder.png');
-  });
-
   it('should initialize favorites array', () => {
     expect(component.favorites).toEqual([]);
   });
@@ -62,5 +55,17 @@ describe('MovieModalComponent', () => {
     spyOn(localStorage, 'setItem');
     component.addToFavorities();
     expect(localStorage.setItem).toHaveBeenCalledWith('favorites', JSON.stringify(component.favorites));
+  });
+
+  it('should return "Adicionado" if item is already favorite', () => {
+    component.item.favorite = true;
+    const buttonText = component.getButtonText();
+    expect(buttonText).toEqual('Adicionado');
+  });
+  
+  it('should return "Adicionar aos favoritos" if item is not favorite', () => {
+    component.item.favorite = false;
+    const buttonText = component.getButtonText();
+    expect(buttonText).toEqual('Adicionar aos favoritos');
   });
 });

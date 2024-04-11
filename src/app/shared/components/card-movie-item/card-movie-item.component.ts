@@ -22,6 +22,6 @@ export class CardItemComponent {
   };
 
   onImgError(event: any) {
-    event.target.src = './assets/images/poster-placeholder.png';
+    event.target.src = 'https://via.placeholder.com/300x450.png?text=Image+not+found';
   }
 }

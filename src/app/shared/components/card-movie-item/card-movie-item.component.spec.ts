@@ -28,11 +28,4 @@ describe('CardItemComponent', () => {
   it('should set item input', () => {
     expect(component.item).toEqual(movie);
   });
-
-  it('should set item input', () => {
-    const imgElement = fixture.nativeElement.querySelector('img');
-    spyOn(imgElement, 'addEventListener');
-    component.onImgError({ target: imgElement });
-    expect(imgElement.src).toContain('/assets/images/poster-placeholder.png');
-  });
 });

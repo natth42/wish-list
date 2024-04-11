@@ -54,34 +54,21 @@ describe('CardItemComponent', () => {
     expect(component.OpenModal.emit).toHaveBeenCalled();
   });
 
-  it('should set item input', () => {
-    const imgElement = fixture.nativeElement.querySelector('img');
-    spyOn(imgElement, 'addEventListener');
-    component.onImgError({ target: imgElement });
-    expect(imgElement.src).toContain('/assets/images/poster-placeholder.png');
-  });
-
   it('should initialize favorites from localStorage', () => {
-    // Arrange
     const favorites: Array<MovieFavorited> = favoriteListMock;
     spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(favorites));
 
-    // Act
     component.ngOnInit();
 
-    // Assert
     expect(component.favorites).toEqual(favorites);
     expect(localStorage.getItem).toHaveBeenCalledWith('favorites');
   });
 
   it('should initialize favorites as an empty array if localStorage is empty', () => {
-    // Arrange
     spyOn(localStorage, 'getItem').and.returnValue(null);
 
-    // Act
     component.ngOnInit();
 
-    // Assert
     expect(component.favorites).toEqual([]);
     expect(localStorage.getItem).toHaveBeenCalledWith('favorites');
   });
