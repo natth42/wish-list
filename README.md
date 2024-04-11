@@ -49,6 +49,9 @@ O projeto foi organizado da seguinte forma:
 Essa estrutura de pasta foi criada para facilitar a manutenção e manter a organização de acordo com o crescimento da aplicação.
 
 Além disso este projeto foi desenvolvido pensando em qualidade, por isso altualmente tem um coverage de teste de mais de 80% na aplicação e temos as seguintes notas no lighthouse:
+Performance: >80
+Acessibilidade: 100
+Melhores práticas: >70
 
 ## Tecnologias
 
